@@ -77,6 +77,10 @@ void MyClassA::DoSomething(MyClassB* obj_b) {
 // 禁止 —— 污染命名空间
 using namespace foo;
 ```
+应用举例：
+例如在某些编译器环境下，在不使用`using space std`;的情况下，`std::abs()` 和 `abs()`的行为有可能不同。
+`std::abs()`包括`std::abs(int)`, `std::abs(float)`, `std::abs(long long)`等，而`abs()`有可能只有`abs(int)`一种形式，导致`abs(float)`返回的值永远为`0`。
+因此应尽量避免使用`using namespace std`+`abs()`的形式，建议直接使用使用`std::abs()`.
 
 ### 2. 非成员函数、静态成员函数和全局函数
 
